@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/reactive-api-gateway-microservice/reactive-api-gateway-microservice.iml" filepath="$PROJECT_DIR$/reactive-api-gateway-microservice/reactive-api-gateway-microservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reactive-eureka-microservice/reactive-eureka-microservice.iml" filepath="$PROJECT_DIR$/reactive-eureka-microservice/reactive-eureka-microservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reactive-microservice.iml" filepath="$PROJECT_DIR$/reactive-microservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reactive-storage-microservice/reactive-storage-microservice.iml" filepath="$PROJECT_DIR$/reactive-storage-microservice/reactive-storage-microservice.iml" />
+    </modules>
+  </component>
+</project>
