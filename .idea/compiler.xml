@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="reactive-backup-storage-microservice" />
         <module name="reactive-webclient" />
         <module name="reactive-api-gateway-microservice" />
         <module name="reactive-eureka-microservice" />
@@ -15,6 +16,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="reactive-api-gateway-microservice" target="19" />
+      <module name="reactive-backup-storage-microservice" target="19" />
       <module name="reactive-clients" target="1.5" />
       <module name="reactive-eureka-microservice" target="19" />
       <module name="reactive-microservice" target="1.5" />
@@ -25,6 +27,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="reactive-api-gateway-microservice" options="-parameters" />
+      <module name="reactive-backup-storage-microservice" options="-parameters" />
       <module name="reactive-eureka-microservice" options="-parameters" />
       <module name="reactive-storage-microservice" options="-parameters" />
       <module name="reactive-webclient" options="" />

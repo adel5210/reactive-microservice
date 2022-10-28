@@ -15,6 +15,7 @@
         <module>reactive-eureka-microservice</module>
         <module>reactive-api-gateway-microservice</module>
         <module>reactive-webclient</module>
+        <module>reactive-backup-storage-microservice</module>
     </modules>
 
 </project>
