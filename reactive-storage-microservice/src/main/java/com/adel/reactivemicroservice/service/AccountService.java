@@ -3,6 +3,7 @@ package com.adel.reactivemicroservice.service;
 import com.adel.reactivemicroservice.model.Account;
 import com.adel.reactivemicroservice.repository.AccountRepository;
 import com.adel.reactivewebclient.logs.LogsClient;
+import com.adel.reactivewebclient.logs.LogsDto;
 import com.adel.reactivewebclient.logs.LogsDtoBuilder;
 import com.adel.reactivewebclient.storage.AccountDto;
 import com.adel.reactivewebclient.storage.AccountDtoBuilder;
@@ -19,7 +20,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class AccountService {
 
-//    private final WebClient.Builder webClientBuilder;
+    private final WebClient.Builder webClientBuilder;
     private final AccountRepository repository;
     private final LogsClient logsClient;
 
@@ -60,25 +61,25 @@ public class AccountService {
     @Transactional
     public Mono<AccountDto> create(Account account){
         log.info("create: {}", account);
+//        final Mono<String> asyncLogs = logsClient.processToLogs(LogsDtoBuilder.aLogsDto()
+//                .data(account.getCustomerId())
+//                .success(true)
+//                .build());
+        final Mono<String> monoLogs = webClientBuilder.build().post()
+                .uri("http://REACTIVE-BACKUP-STORAGE-MICROSERVICE/api/logs")
+                .body(Mono.just(LogsDtoBuilder.aLogsDto()
+                        .data(account.getCustomerId())
+                        .success(true)
+                        .build()), LogsDto.class)
+                .exchangeToMono(exc -> exc.bodyToMono(String.class));
         final Mono<AccountDto> result = repository.save(account).map(m ->
                 AccountDtoBuilder.anAccountDto()
                         .amount(m.getAmount())
                         .number(m.getNumber())
                         .customerId(m.getCustomerId())
-                        .build());
-//        final String s = "Logs from: " + webClientBuilder.build().post()
-//                .uri("http://REACTIVE-BACKUP-STORAGE-MICROSERVICE/api/logs")
-//                .body(Mono.just(LogsDtoBuilder.aLogsDto()
-//                        .data(account.getCustomerId())
-//                        .success(true)
-//                        .build()), LogsDto.class)
-//                .exchangeToMono(exc -> exc.bodyToMono(String.class)).block();
-//        log.info(s);
-
-        logsClient.processToLogs(LogsDtoBuilder.aLogsDto()
-                .data(account.getCustomerId())
-                .success(true)
-                .build()).block();
+                        .build())
+                .zipWith(monoLogs)
+                .map(m->m.getT1());
         return result;
     }
 
