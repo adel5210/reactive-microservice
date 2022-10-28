@@ -61,17 +61,17 @@ public class AccountService {
     @Transactional
     public Mono<AccountDto> create(Account account){
         log.info("create: {}", account);
-//        final Mono<String> asyncLogs = logsClient.processToLogs(LogsDtoBuilder.aLogsDto()
-//                .data(account.getCustomerId())
-//                .success(true)
-//                .build());
-        final Mono<String> monoLogs = webClientBuilder.build().post()
-                .uri("http://REACTIVE-BACKUP-STORAGE-MICROSERVICE/api/logs")
-                .body(Mono.just(LogsDtoBuilder.aLogsDto()
-                        .data(account.getCustomerId())
-                        .success(true)
-                        .build()), LogsDto.class)
-                .exchangeToMono(exc -> exc.bodyToMono(String.class));
+        final Mono<String> monoLogs = logsClient.processToLogs(LogsDtoBuilder.aLogsDto()
+                .data(account.getCustomerId())
+                .success(true)
+                .build());
+//        final Mono<String> monoLogs = webClientBuilder.build().post()
+//                .uri("http://REACTIVE-BACKUP-STORAGE-MICROSERVICE/api/logs")
+//                .body(Mono.just(LogsDtoBuilder.aLogsDto()
+//                        .data(account.getCustomerId())
+//                        .success(true)
+//                        .build()), LogsDto.class)
+//                .exchangeToMono(exc -> exc.bodyToMono(String.class));
         final Mono<AccountDto> result = repository.save(account).map(m ->
                 AccountDtoBuilder.anAccountDto()
                         .amount(m.getAmount())

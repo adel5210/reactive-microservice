@@ -3,9 +3,10 @@ package com.adel.reactivewebclient.logs;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import reactivefeign.spring.config.ReactiveFeignClient;
 import reactor.core.publisher.Mono;
 
-@FeignClient(value = "reactive-backup-storage-microservice")
+@ReactiveFeignClient(value = "reactive-backup-storage-microservice", url = "http://REACTIVE-BACKUP-STORAGE-MICROSERVICE")
 public interface LogsClient {
 
     @PostMapping("api/logs")
