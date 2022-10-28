@@ -1,0 +1,18 @@
+server:
+    port: 7770
+spring:
+    application:
+        name: reactive-api-gateway-microservice
+    cloud:
+        gateway:
+            routes:
+                - id: reactive-storage-microservice
+                  uri: lb://reactive-storage-microservice
+                  predicates:
+                      - Path=/api/customer/**
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:7777/eureka
+        fetch-registry: true
+        register-with-eureka: true

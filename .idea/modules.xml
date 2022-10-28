@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/reactive-eureka-microservice/reactive-eureka-microservice.iml" filepath="$PROJECT_DIR$/reactive-eureka-microservice/reactive-eureka-microservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/reactive-microservice.iml" filepath="$PROJECT_DIR$/reactive-microservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/reactive-storage-microservice/reactive-storage-microservice.iml" filepath="$PROJECT_DIR$/reactive-storage-microservice/reactive-storage-microservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reactive-webclient/reactive-webclient.iml" filepath="$PROJECT_DIR$/reactive-webclient/reactive-webclient.iml" />
     </modules>
   </component>
 </project>
