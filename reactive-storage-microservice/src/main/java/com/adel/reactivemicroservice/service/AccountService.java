@@ -3,7 +3,6 @@ package com.adel.reactivemicroservice.service;
 import com.adel.reactivemicroservice.model.Account;
 import com.adel.reactivemicroservice.repository.AccountRepository;
 import com.adel.reactivewebclient.logs.LogsClient;
-import com.adel.reactivewebclient.logs.LogsDto;
 import com.adel.reactivewebclient.logs.LogsDtoBuilder;
 import com.adel.reactivewebclient.storage.AccountDto;
 import com.adel.reactivewebclient.storage.AccountDtoBuilder;
